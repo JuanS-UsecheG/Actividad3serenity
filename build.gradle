@@ -1,0 +1,46 @@
+plugins {
+    id 'java'
+    id 'idea'
+    id 'net.serenity-bdd.serenity-gradle-plugin' version '4.2.34'
+}
+
+group = 'com.uam'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+ext {
+    serenityVersion = '4.2.34'
+}
+
+dependencies {
+    testImplementation "net.serenity-bdd:serenity-core:${serenityVersion}"
+    testImplementation "net.serenity-bdd:serenity-junit:${serenityVersion}"
+    testImplementation "net.serenity-bdd:serenity-cucumber:${serenityVersion}"
+    testImplementation "net.serenity-bdd:serenity-screenplay:${serenityVersion}"
+    testImplementation "net.serenity-bdd:serenity-screenplay-webdriver:${serenityVersion}"
+
+    // Cucumber + JUnit 4
+    testImplementation "junit:junit:4.13.2"
+    testImplementation "io.cucumber:cucumber-junit:7.18.1"
+    testImplementation "io.cucumber:cucumber-java:7.18.1"
+
+    testImplementation "org.hamcrest:hamcrest:2.2"
+}
+
+test {
+    // Para JUnit4 runners como CucumberWithSerenity
+    useJUnit()
+
+    systemProperties System.getProperties()
+    testLogging.showStandardStreams = true
+
+    // EL REPORTE
+    finalizedBy 'aggregate'
+}
+
+serenity {
+    reports = ["single-page-html"]
+}

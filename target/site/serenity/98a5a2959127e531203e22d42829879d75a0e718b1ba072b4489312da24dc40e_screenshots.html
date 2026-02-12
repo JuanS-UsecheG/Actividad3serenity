@@ -1,0 +1,325 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Screenshots</title>
+
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+<link rel="apple-touch-icon" sizes="57x57" href="apple-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="apple-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="apple-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="apple-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="apple-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="apple-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="apple-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="apple-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-icon-180x180.png">
+<link rel="icon" type="image/png" sizes="192x192"  href="android-icon-192x192.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="96x96" href="favicon-96x96.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+<meta name="theme-color" content="#ffffff"><link rel="stylesheet" href="bootstrap-icons/bootstrap-icons.css">
+<!-- JQuery -->
+<script type="text/javascript" src="scripts/jquery-3.7.1.min.js"></script><!-- Required Stylesheets -->
+<link href="bootstrap-treeview/dist/bootstrap-treeview.min.css" rel="stylesheet">
+
+<!-- Required Javascript -->
+<script src="bootstrap-treeview/dist/bootstrap-treeview.min.js"></script><!-- DataTables -->
+<link type="text/css" href="datatables/2.3.1/datatables.min.css" rel="stylesheet" />
+<script type="text/javascript" src="datatables/2.3.1/datatables.min.js"></script>
+<script type="text/javascript" src="datatables/2.3.1/time-elapsed-dhms.js"></script>
+
+<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<script src="bootstrap/js/bootstrap.min.js"></script>
+
+
+<script>
+    jQuery.fn.dataTable.ext.type.order['time-elapsed-dhms-pre'] = function(data) {
+
+        var matches = data.match(/^(\d+(?:\.\d+)?)\s*([a-z]+)/i);
+        var multipliers = {
+            ms: 1,
+            s: 1000,
+            m: 60000,
+            h: 3600000,
+            d: 86400000
+        };
+
+        if (matches) {
+            var multiplier = multipliers[matches[2].toLowerCase()];
+            return parseFloat(matches[1]) * multiplier;
+        } else {
+            return -1;
+        };
+    };
+</script>
+<link rel="stylesheet" href="css/core.css"/>
+<link rel="stylesheet" href="css/link.css"/>
+<link type="text/css" media="screen" href="css/screen.css" rel="Stylesheet"/>
+<!--CHART.JS-->
+<script src="chartjs/chart.js"></script>
+<script src="chartjs/chartjs-plugin-datalabels@2.0.0.min.js"></script>
+<script src="chartjs/patternomaly.min.js"></script>
+<script>
+    // Register the plugin to all charts:
+    Chart.register(ChartDataLabels);
+</script>
+
+    <!-- Swiper.js local styles and script -->
+    <link rel="stylesheet" href="swiper/swiper-bundle.min.css" />
+    <script src="swiper/swiper-bundle.min.js"></script>
+
+    <script type="text/javascript">
+        document.addEventListener("DOMContentLoaded", function () {
+            const urlParams = new URLSearchParams(window.location.search);
+            const startIndex = parseInt(urlParams.get("screenshot")) || 0;
+
+            new Swiper('.swiper', {
+                initialSlide: startIndex,
+                effect: 'fade',
+                speed: 200,
+                pagination: {
+                    el: ".swiper-pagination",
+                    clickable: true,
+                    renderBullet: function (index, className) {
+                        return '<span class="' + className + '">' + (index + 1) + "</span>";
+                    },
+                },
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev'
+                },
+                keyboard: {
+                    enabled: true,
+                    onlyInViewport: true
+                }
+            });
+        });
+    </script>
+
+    <style>
+        .swiper {
+            width: 100%;
+            max-width: 800px;
+            margin: 20px auto;
+        }
+        .swiper-slide img {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+        }
+
+        .swiper-slide img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .swiper-pagination-bullet {
+            width: 20px;
+            height: 20px;
+            text-align: center;
+            line-height: 20px;
+            font-size: 12px;
+            color: #000;
+            opacity: 1;
+            background: lightgrey;
+        }
+
+        .swiper-pagination-bullet-active {
+            color: #fff;
+            background: #007aff;
+        }
+    </style>
+</head>
+
+<body>
+<div id="topheader">
+    <div id="topbanner">
+        <div id="logo"><a href="index.html"><img src="images/serenity-logo.png" border="0"/></a></div>
+        <div id="projectname-banner" style="float:right">
+            <span class="projectname">
+                <span class="projecttitle">Serenity BDD Report</span>
+                <span class="projectsubtitle"></span>
+            </span>
+        </div>
+    </div>
+</div>
+
+<div class="middlecontent">
+    <div id="contenttop">
+        <div class="middlebg">
+            <span class="breadcrumbs">
+                <a href="index.html">Home</a>
+                > <span class="truncate-40"><a
+                    href="8d9339a7cda223b838c070ef2ea2cf8848e810da4741a3e95f7bae7720dc15fd.html">Login</a></span>
+                > <span class="truncate-60"><a
+                    href="98a5a2959127e531203e22d42829879d75a0e718b1ba072b4489312da24dc40e.html">Successful login with credentials </a></span>
+                > Screenshots
+            </span>
+        </div>
+        <div class="rightbg"></div>
+    </div>
+
+    <div class="clr"></div>
+
+    <!--/* starts second table*/-->
+<div>
+    <ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#"><i class="bi bi-journal-check"></i> Overall Test Results</a>
+        </li>
+        <li >
+            <a href="capabilities.html"><i class="bi bi-journal-text"></i> Requirements</a>
+        </li>
+        <li >
+            <a href="576946480b52ad056d6f5bddf874399c83582ecf90963cc074a14c70580e7d9f.html"><i class="bi bi-chat-text"></i> Features</a>
+        </li>
+    </ul>
+    <span class="date-and-time"><a href="build-info.html"><i class="bi bi-info-circle"></i></a> Report generated 11-02-2026 20:58</span>
+    <br style="clear:left"/>
+</div>
+
+    <div class="clr"></div>
+
+
+    <div id="contentbody">
+        <div class="titlebar">
+            <div class="story-title">
+                <table class="outcome-header">
+                    <tr>
+                        <td>
+                            <div>
+                                <h3 class="discreet-story-header">
+                                    <i class="fs-2 bi bi-chat-left-quote large-icon"></i>
+                                    <span class="story-header-title">User Authentication, Search And Purchase Flow </span>
+                                    <span class="badge tag-badge" style="">Feature</span>
+                                </h3>
+
+                                <div class="discreet-requirement-narrative-title">
+                                
+                                </div>
+                            </div>
+
+                        </td>
+                        <td valign="top" align="right">
+                            <p class="tag">
+                                <span class="badge tag-badge" style="background:default;"
+                                    <i class="bi bi-tag-fill"></i>&nbsp;<a class="tagLink" style="background:default;" href="34658a1663fcf042bd7acb3325affbe4e647c8acd84d0228be2f52e1381e61b9.html">10 To 30 Seconds
+                                        (Duration)
+                                </a>
+                                </span>
+                            </p>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="story-title">
+                <table class="outcome-header">
+                    <tr>
+                        <td colspan="2" class="test-title-bar">
+                            <span class="outcome-icon"><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon fa-2x' title='SUCCESS'></i></a></span>
+                            <span class="test-case-title">
+                                <span class="success-color">Successful login with credentials
+                                    <span class="related-issue-title"></span>
+                                </span>
+                            </span>
+
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="clr"></div>
+
+    <div class="story-title">
+        <h3>Scenario:</h3>
+        <div class="scenario">When the user logs in with username "&lt;user&gt;" and password "&lt;pass&gt;"<br>Then the user should see the account session started</div>
+    </div>
+
+    <div id="beforetable"></div>
+    <div id="contenttilttle">
+    <!-- Swiper Carousel -->
+    <div class="swiper">
+        <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <img src="2f2aa8328e670655cf1dd856442049ba8298831ef0b647203607b0f9554312ae.png" title=" 1: Successful login with credentials ({user=erlys.saezc@autonoma.edu.co, pass=uam_123*})" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="2f2aa8328e670655cf1dd856442049ba8298831ef0b647203607b0f9554312ae.png" title=" Given that the user opens DemoShop" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="2f2aa8328e670655cf1dd856442049ba8298831ef0b647203607b0f9554312ae.png" title=" User open demo shop" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="2f2aa8328e670655cf1dd856442049ba8298831ef0b647203607b0f9554312ae.png" title=" User opens the browser at http://demo-shop.cesaragudelo.com/" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="9f787cc58e25e95efcfdc7b1ad60447a43504a7b142ae4d64e91bd6a3f4778e3.png" title=" User open demo shop (completed)" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="9f787cc58e25e95efcfdc7b1ad60447a43504a7b142ae4d64e91bd6a3f4778e3.png" title=" Given that the user opens DemoShop (completed)" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="9f787cc58e25e95efcfdc7b1ad60447a43504a7b142ae4d64e91bd6a3f4778e3.png" title=" When the user logs in with username &quot;erlys.saezc@autonoma.edu.co&quot; and password &quot;uam_123*&quot;" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="9dde3419c3806465851d903144b3e975022000cbb1556d1f90b4229f42a13d66.png" title=" User login" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="8eae3fc5bfd96ce43dae9343754d98c44212c01b2f1d57bd62bca010e03717c2.png" title=" User clicks on login entry point (link/button)" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="fc9561fe37091c502b1ce8decfe965b54ff2de8fff6537607de3b80aac116f1f.png" title=" User clicks on login entry point (link/button) (completed)" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="fc9561fe37091c502b1ce8decfe965b54ff2de8fff6537607de3b80aac116f1f.png" title=" User enters 'erlys.saezc@autonoma.edu.co' into username/email field" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="8318eed27a4ce1e5445e950c2550dfd463a281ce3859785e496d9744fd67bc49.png" title=" User enters 'erlys.saezc@autonoma.edu.co' into username/email field (completed)" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="8318eed27a4ce1e5445e950c2550dfd463a281ce3859785e496d9744fd67bc49.png" title=" User enters 'uam_123*' into password field" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="74a864adaf92d1a3bb122d532ad9789ec41bed734264ebca56387369ce1becc2.png" title=" User enters 'uam_123*' into password field (completed)" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="837f36843834bdabac982c8cb8c1856469a4b4a5891bd69276130a11167f7bfc.png" title=" User clicks on login submit button" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="0b7395576a415674c572cad2ccfb94d6b956c47317ad848679a57e348b008ba9.png" title=" User clicks on login submit button (completed)" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="0b7395576a415674c572cad2ccfb94d6b956c47317ad848679a57e348b008ba9.png" title=" User login (completed)" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="699c78e957f24dc640752f16f067d22f66af2201b98389bab67f3a70e1d6def3.png" title=" When the user logs in with username &quot;erlys.saezc@autonoma.edu.co&quot; and password &quot;uam_123*&quot; (completed)" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="699c78e957f24dc640752f16f067d22f66af2201b98389bab67f3a70e1d6def3.png" title=" Then the user should see the account session started" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="699c78e957f24dc640752f16f067d22f66af2201b98389bab67f3a70e1d6def3.png" title=" Then login step definition$$ lambda$965/0x000001f510475ff0 should be (true)" width="0" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="699c78e957f24dc640752f16f067d22f66af2201b98389bab67f3a70e1d6def3.png" title=" 1: Successful login with credentials ({user=erlys.saezc@autonoma.edu.co, pass=uam_123*}) (completed): <span class='success-color'>SUCCESS</span>" width="0" />
+                </div>
+        </div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-pagination"></div>
+    </div>
+</div>
+<div id="beforefooter"></div>
+<div id="bottomfooter">
+    <span class="version">Serenity BDD version 4.2.34</span>
+</div>
+</body>
+</html>
